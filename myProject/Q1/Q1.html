@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" charset="UTF-8">
+function isZero(n){
+return n == 0;
+}
+
+function add1(n){
+return n + 1;
+}
+
+function sub1(n){
+return n - 1;
+}
+
+/*function add(a,b){
+while(!isZero(b)){
+a = add1(a);
+b = sub1(b);
+}
+return a;
+};*/
+
+function add(a,b){
+while(sub1(b)){
+return add(add1(a),sub1(b));
+}
+return add1(a);
+}
+
+
+function sub(a,b){
+while(!isZero(b)){
+a = sub1(a);
+b = sub1(b);
+}
+return a;
+}
+
+
+//a>=b
+/*function sub(a,b){
+if(!lessthan(a,b)){
+while(sub1(b)){
+return sub1(sub1(a),sub1(b));
+}
+return sub1(a);
+}
+
+if(lessthan(a,b)){
+
+while(sub1(a)){
+return sub1(sub1(b),sub1(a));
+}
+return sub1(b);
+}
+}*/
+
+function multiple(a,b){
+var x = 0;
+while(!isZero(b)){
+x = add(x,a);
+b = sub1(b);
+}
+return x;
+}
+
+function divide(a,b){
+if(isZero(b)){
+return "ERROR"
+}
+var x = 0;
+while (!lessthan(a,b)){
+a = sub(a,b);
+x = add1(x);
+} 
+return x;
+}
+
+function eq(a,b){
+return isZero(sub(a,b));
+}
+
+function greaterthan(a,b){
+if(eq(a,b)){
+return false;
+}
+var a1 = a;
+var b1 = b;
+while(true){
+var a1 = add1(a1);
+var b1 = add1(b1);
+if(eq(a,b1))
+return true;
+if(eq(a1,b))
+return false;
+}
+}
+
+/*function greaterthan(a,b){
+if(add(Math.abs(sub(a,b)),sub(a,b)))
+return true;
+else
+return false;
+}*/
+
+function lessthan(a,b){
+if(eq(a,b)){
+return false;
+}
+return !greaterthan(a,b);
+}
+
+function remainder(a,b){
+if(isZero(b)){
+return "ERROR"
+}
+var x = 0;
+while (!lessthan(a,b)){
+a = sub(a,b);
+x = add1(x);
+} 
+return a;
+}
+</script>
+</head>
+<body></body>
+
+</html>
